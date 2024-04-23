@@ -1,0 +1,2 @@
+site:{{URL}} inurl:security filetype:pdf
+site:{{URL}} intext:password
