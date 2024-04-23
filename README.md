@@ -1,2 +1,2 @@
 # godork
-a handy companion for effortlessly generating Google dorking links.
+A handy companion for effortlessly generating Google dorking links.
