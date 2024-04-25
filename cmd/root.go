@@ -2,7 +2,6 @@ package cmd
 
 import (
 	"bufio"
-	"fmt"
 	"godork/dork"
 	"os"
 
@@ -30,24 +29,54 @@ var rootCmd = &cobra.Command{
 		url, err := cmd.Flags().GetString("url")
 		cobra.CheckErr(err)
 
-		var dorks []string
-		if url != "" {
-			//append a single URL from the url flag
+		dorks, err := createDorks(dorkfile, url)
+		cobra.CheckErr(err)
+
+		processor, err := getProcessor(cmd)
+		cobra.CheckErr(err)
+
+		err = processDorks(processor, dorks)
+		cobra.CheckErr(err)
+	},
+}
+
+// createDorks from the given file using the given URL
+func createDorks(dorkfile string, url string) ([]string, error) {
+	var dorks []string
+	if url != "" {
+		//append a single URL from the url flag
+		err := dork.AppendDorkForUrl(url, dorkfile, &dorks)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		//append a bunch of URLs read from STDIN
+		scanner := bufio.NewScanner(os.Stdin)
+		for scanner.Scan() {
+			url := scanner.Text()
 			err := dork.AppendDorkForUrl(url, dorkfile, &dorks)
-			cobra.CheckErr(err)
-		} else {
-			//append a bunch of urls read from STDIN
-			scanner := bufio.NewScanner(os.Stdin)
-			for scanner.Scan() {
-				url := scanner.Text()
-				err := dork.AppendDorkForUrl(url, dorkfile, &dorks)
-				cobra.CheckErr(err)
+			if err != nil {
+				return nil, err
 			}
 		}
-		for _, dork := range dorks {
-			fmt.Println(dork)
-		}
-	},
+	}
+	return dorks, nil
+}
+
+// getProcessor reports the default processor which should be used to process the dorks
+func getProcessor(cmd *cobra.Command) (*dork.DorkPrinter, error) {
+	urlencode, err := cmd.Flags().GetBool("urlencode")
+	if err != nil {
+		return nil, err
+	}
+	return &dork.DorkPrinter{
+		UrlEncode: urlencode,
+	}, nil
+}
+
+// processDorks will process the dorks with the given processor
+func processDorks(p dork.DorkProcessor, dorks []string) error {
+	return p.Process(dorks)
 }
 
 // Execute adds all child commands to the root command and sets flags appropriately.
@@ -72,7 +101,7 @@ func getDorkFile(cmd *cobra.Command) string {
 }
 
 func init() {
-	rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+	rootCmd.Flags().BoolP("urlencode", "e", false, "URL-Encode the output URLs")
 	rootCmd.Flags().StringP("dorkfile", "d", "dorks.txt", "Dorks file to use")
 	rootCmd.Flags().StringP("url", "u", "", "a single URL to ceate the dorks for")
 }

@@ -1,2 +1,238 @@
-site:{{URL}} inurl:security filetype:pdf
-site:{{URL}} intext:password
+# Site Vulnerability Dorks:
+site:{{URL}} intitle:"Index of /"
+site:{{URL}} filetype:sql
+site:{{URL}} ext:php intitle:"index of"
+site:{{URL}} ext:log
+site:{{URL}} ext:conf
+site:{{URL}} ext:ini
+site:{{URL}} ext:asp
+site:{{URL}} ext:aspx
+site:{{URL}} ext:jsp
+site:{{URL}} inurl:"cgi-bin/" ext:pl
+site:{{URL}} inurl:"/phpMyAdmin/index.php" ext:php
+site:{{URL}} inurl:/phpinfo.php
+site:{{URL}} inurl:/info.php
+
+# Sensitive Information Dorks:
+site:{{URL}} intitle:"index of" password
+site:{{URL}} intitle:"index of" private
+site:{{URL}} inurl:wp-config.php
+site:{{URL}} inurl:config.php
+site:{{URL}} inurl:database.yml
+site:{{URL}} inurl:.env
+site:{{URL}} filetype:env
+site:{{URL}} filetype:sql password
+site:{{URL}} filetype:env DB_PASSWORD
+site:{{URL}} intitle:"Index of /" | intitle:"Index Of /" "database.yml"
+
+# Backup Files Dorks:
+site:{{URL}} ext:bkf | ext:bkp | ext:bak | ext:old | ext:backup
+site:{{URL}} intitle:"index of" ext:sql | ext:zip | ext:rar | ext:tar | ext:bak | ext:bkf | ext:bkp | ext:back
+site:{{URL}} filetype:sql
+site:{{URL}} intitle:"index of" "sql.bak" | "sql.zip" | "sql.tar.gz" | "sql.tar.bz2"
+
+# Directory Listings:
+site:{{URL}} -www
+site:{{URL}} intitle:"index of" -git
+site:{{URL}} inurl:/test intitle:"Test Page for the Apache HTTP Server on Fedora"
+site:{{URL}} intitle:"index of" "secret"
+site:{{URL}} inurl:/db/main.mdb
+site:{{URL}} inurl:/db/main.accdb
+site:{{URL}} intitle:"index of" "config.yml"
+
+# Login Pages:
+site:{{URL}} inurl:login
+site:{{URL}} inurl:admin
+site:{{URL}} inurl:signin
+site:{{URL}} inurl:auth
+site:{{URL}} inurl:/user inurl:/login inurl:/admin
+site:{{URL}} intitle:"login" intext:"password" | "username" | "login" -github.com
+
+# Exposed Databases:
+site:{{URL}} intext:"powered by mysql"
+site:{{URL}} intitle:"Index of /" "phpmyadmin"
+site:{{URL}} intitle:"Welcome to phpMyAdmin"
+site:{{URL}} intitle:"adminer"
+site:{{URL}} intitle:"adminer" filetype:php
+site:{{URL}} intitle:"adminer -soueceforge" 
+
+# Error Messages:
+site:{{URL}} intext:"SQL syntax"
+site:{{URL}} intext:"Error Occurred While Processing Request"
+site:{{URL}} intext:"Warning: mysql_connect()"
+site:{{URL}} intitle:"index of" intitle:error
+site:{{URL}} intitle:"index of" "error.log"
+
+# Open Redirect Vulnerabilities:
+site:{{URL}} inurl:redir | inurl:redirect | inurl:return | inurl:redirect_to
+site:{{URL}} intitle:"redirect"
+site:{{URL}} intitle:"forward"
+site:{{URL}} inurl:"redirect.php?url="
+site:{{URL}} inurl:"openredirect.php?url="
+
+# Cross-Site Scripting (XSS) Vulnerabilities:
+site:{{URL}} intext:"<script>alert('XSS')</script>"
+site:{{URL}} inurl:".php?="
+site:{{URL}} inurl:".php?" intext:"XSS"
+site:{{URL}} intext:"<script>alert('XSS')</script>" inurl:"test.php"
+
+# SQL Injection Vulnerabilities:
+site:{{URL}} inurl:".php?id="
+site:{{URL}} inurl:".php?category="
+site:{{URL}} inurl:".php?page="
+site:{{URL}} inurl:"id=" "&" intext:"sql"
+site:{{URL}} inurl:"id=" "&" intext:"sql" filetype:php
+site:{{URL}} intext:"sql syntax" intext:"id=" | inurl:"id="
+site:{{URL}} inurl:"index.php?id=" intext:"sql"
+
+# Server Version Information:
+site:{{URL}} intitle:"Apache/2.2.14 (Ubuntu)" 
+site:{{URL}} intitle:"IIS Windows Server"
+site:{{URL}} intitle:"Apache Tomcat"
+site:{{URL}} intitle:"Index of /" "server at"
+
+# Network Devices:
+site:{{URL}} intitle:"Router Login"
+site:{{URL}} intitle:"WebcamXP 5"
+site:{{URL}} intitle:"Network Print Server"
+site:{{URL}} intitle:"HP LaserJet" inurl:info_configuration.htm
+site:{{URL}} intitle:"TP-Link Web Management"
+site:{{URL}} intitle:"Canon Web Management" inurl:Device_Info.htm
+site:{{URL}} intitle:"Brother Web Management" inurl:info.html
+
+# IoT Devices:
+site:{{URL}} intitle:"IP Camera Viewer" inurl:8080
+site:{{URL}} intitle:"Network Camera"
+site:{{URL}} intitle:"Linksys Web"
+site:{{URL}} intitle:"IP Surveillance"
+site:{{URL}} intitle:"Smart Home"
+site:{{URL}} intitle:"Web Site Control"
+site:{{URL}} inurl:"camera" intitle:"webcam"
+
+# Vulnerable CMS:
+site:{{URL}} intitle:"Powered by WordPress"
+site:{{URL}} intitle:"Powered by Joomla"
+site:{{URL}} intitle:"Powered by Drupal"
+site:{{URL}} intitle:"Powered by vBulletin"
+site:{{URL}} inurl:"/wp-content/plugins/" intitle:"index of"
+site:{{URL}} inurl:/wp-content/uploads/ intitle:index of
+site:{{URL}} inurl:/wp-content/themes/ intitle:index of
+
+# Git Dorks:
+site:{{URL}} inurl:.git
+site:{{URL}} intitle:index of .git
+site:{{URL}} intitle:"index of" ".git"
+site:{{URL}} intitle:"index of" ".git" | "current repository"
+site:{{URL}} intitle:"index of" ".git" intitle:"parent directory"
+site:{{URL}} intitle:"index of" ".git" intitle:"new file"
+
+# API Tokens:
+site:{{URL}} intitle:"API Key" | intitle:"API Access Token"
+site:{{URL}} inurl:"api_key" | inurl:"api_token"
+
+# Cross-Site Request Forgery (CSRF) Tokens:
+site:{{URL}} inurl:"csrf_token="
+site:{{URL}} inurl:"token="
+site:{{URL}} inurl:"CSRF" | inurl:"csrf"
+
+# File Upload Vulnerabilities:
+site:{{URL}} inurl:"upload.php"
+site:{{URL}} inurl:"fileupload"
+site:{{URL}} inurl:"/cgi-bin/ upload.pl" | "upload.php"
+
+# WordPress Specific:
+site:{{URL}} inurl:wp-content/uploads
+site:{{URL}} inurl:wp-content/plugins
+site:{{URL}} inurl:wp-content/themes
+site:{{URL}} inurl:wp-login.php
+site:{{URL}} inurl:wp-config.bak
+site:{{URL}} inurl:wp-config.php.bak
+
+# Joomla Specific:
+site:{{URL}} inurl:index.php?option=com_
+
+# Magento Specific:
+site:{{URL}} inurl:admin path:/app/etc/local.xml
+site:{{URL}} inurl:checkout path:/app/etc/local.xml
+site:{{URL}} inurl:/app/etc/local.xml
+
+# phpMyAdmin Specific:
+site:{{URL}} inurl:"db_structure.php" | inurl:"tbl_structure.php" | inurl:"sql.php"
+site:{{URL}} inurl:"phpmyadmin/index.php?route=/setup/index" -github.com
+site:{{URL}} inurl:"phpmyadmin/index.php?route=/setup/index"
+
+# Laravel Specific:
+site:{{URL}} inurl:".env.example"
+
+# Elasticsearch Specific:
+site:{{URL}} intitle:"Elastic Search" intext:"Cluster Health"
+
+# Jenkins Specific:
+site:{{URL}} intitle:"Dashboard [Jenkins]"
+
+# MongoDB Specific:
+site:{{URL}} intitle:"AdminMongo"
+site:{{URL}} inurl:"/admin/r/resumes/review" | inurl:"/admin/resumes/resume"
+
+# ElasticSearch Specific:
+site:{{URL}} intitle:"kibana" intext:"kibana"
+site:{{URL}} intitle:"kibana" intext:"kibana" inurl:/app/kibana
+
+# AWS Related Dorks:
+site:{{URL}} intitle:"Amazon S3 Bucket Listing"
+site:{{URL}} intitle:"index of" "s3.amazonaws.com/"
+site:{{URL}} intitle:"index of" "amazonaws.com" | "s3.amazonaws.com"
+site:{{URL}} intitle:"index of" "AWSLogs/" | "AWSLogs" filetype:txt
+site:{{URL}} intitle:"index of" "AWSLogs/" | "AWSLogs" ext:log
+
+# Azure Related Dorks:
+site:{{URL}} intitle:"Azure Storage Explorer" intext:"Sign in" filetype:json
+site:{{URL}} intitle:"Azure Storage Explorer" intext:"Sign in" filetype:json
+site:{{URL}} intitle:"index of" "blob.core.windows.net"
+site:{{URL}} intitle:"Microsoft Azure" intitle:"Blob Service"
+
+# Google Cloud Related Dorks:
+site:{{URL}} intitle:"index of" "storage.googleapis.com"
+site:{{URL}} intitle:"index of" "storage.googleapis.com" filetype:log
+site:{{URL}} intitle:"index of" "storage.googleapis.com" filetype:json
+site:{{URL}} intitle:"index of" "storage.googleapis.com" filetype:xml
+
+# Kubernetes Related Dorks:
+site:{{URL}} intitle:"kubernetes dashboard" intext:"kubernetes-dashboard-certificate"
+site:{{URL}} intitle:"kubernetes dashboard" intext:"service= kubernetes-dashboard"
+site:{{URL}} intitle:"kubernetes dashboard" intext:"service= kubernetes-dashboard" intitle:"Kubernetes Dashboard"
+site:{{URL}} intitle:"kubernetes dashboard" intext:"service= kubernetes-dashboard" intitle:"Kubernetes Dashboard" filetype:json
+site:{{URL}} intitle:"kubernetes dashboard" intext:"service= kubernetes-dashboard" intitle:"Kubernetes Dashboard" filetype:yaml
+site:{{URL}} intitle:"kubernetes dashboard" intext:"service= kubernetes-dashboard" intitle:"Kubernetes Dashboard" filetype:yml
+site:{{URL}} intitle:"kubernetes dashboard" intext:"service= kubernetes-dashboard" intitle:"Kubernetes Dashboard" filetype:txt
+site:{{URL}} intitle:"kubernetes dashboard" intext:"service= kubernetes-dashboard" intitle:"Kubernetes Dashboard" filetype:conf
+site:{{URL}} intitle:"kubernetes dashboard" intext:"service= kubernetes-dashboard" intitle:"Kubernetes Dashboard" filetype:ini
+site:{{URL}} intitle:"kubernetes dashboard" intext:"service= kubernetes-dashboard" intitle:"Kubernetes Dashboard" filetype:xml
+site:{{URL}} intitle:"kubernetes dashboard" intext:"service= kubernetes-dashboard" intitle:"Kubernetes Dashboard" filetype:yaml | yml | json | txt | conf | ini | xml
+
+# Logstash Related Dorks:
+site:{{URL}} intitle:"logstash - web"
+
+# Graylog Related Dorks:
+site:{{URL}} intitle:"Graylog Web Interface" intext:"Username"
+site:{{URL}} intitle:"Graylog Web Interface" intext:"Password"
+site:{{URL}} intitle:"Graylog web interface" intext:"search input"
+
+# Other Monitoring Systems:
+site:{{URL}} intitle:"Nagios" inurl:/nagios/cgi-bin/status.cgi
+site:{{URL}} intitle:"Nagios Core" inurl:/nagios/cgi-bin/status.cgi
+site:{{URL}} intitle:"Zabbix" inurl:/zabbix/index.php
+site:{{URL}} intitle:"Zabbix" intext:"Authentication"
+site:{{URL}} intitle:"Cacti" intext:"username" intext:"password"
+site:{{URL}} intitle:"Observium" intext:"username" intext:"password"
+site:{{URL}} intitle:"PRTG Network Monitor" intext:"username" intext:"password"
+site:{{URL}} intitle:"Munin" intext:"Munin" intext:"Quick Overview"
+
+# Other System Monitoring Dorks:
+site:{{URL}} intitle:"Dashboard [OpenNMS]"
+site:{{URL}} intitle:"Cobbler" "login" "password"
+site:{{URL}} intitle:"Pandora FMS" inurl:/index.php?sec=network
+site:{{URL}} intitle:"WhatsUp Gold" "click here to login"
+site:{{URL}} intitle:"Login - Grafana"
+site:{{URL}} intitle:"Login - Grafana" intext:"Remember me"
+site:{{URL}} intitle:"Login - Grafana" intext:"Forgot your password?"

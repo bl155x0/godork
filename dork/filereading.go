@@ -3,9 +3,10 @@ package dork
 import (
 	"bufio"
 	"os"
+	"strings"
 )
 
-// reads all the lines in the given file
+// readLinesFromFile reports all the lines in the given file
 func readLinesFromFile(filename string) ([]string, error) {
 	file, err := os.OpenFile(filename, os.O_RDONLY, 0)
 	if err != nil {
@@ -16,7 +17,15 @@ func readLinesFromFile(filename string) ([]string, error) {
 	var lines []string
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
-		lines = append(lines, scanner.Text())
+		line := scanner.Text()
+		if isEmptyLine(line) == false && strings.HasPrefix(line, "#") == false {
+			lines = append(lines, line)
+		}
 	}
 	return lines, nil
+}
+
+// isEmptyLine reports if the given string represents an empty line
+func isEmptyLine(line string) bool {
+	return len(strings.TrimSpace(line)) == 0
 }
