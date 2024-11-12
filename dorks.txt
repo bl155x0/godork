@@ -184,6 +184,7 @@ site:{{URL}} intitle:"index of" "s3.amazonaws.com/"
 site:{{URL}} intitle:"index of" "amazonaws.com" | "s3.amazonaws.com"
 site:{{URL}} intitle:"index of" "AWSLogs/" | "AWSLogs" filetype:txt
 site:{{URL}} intitle:"index of" "AWSLogs/" | "AWSLogs" ext:log
+intext:{{URL}} inurl:amazonaws.com
 
 # Azure Related Dorks:
 site:{{URL}} intitle:"Azure Storage Explorer" intext:"Sign in" filetype:json
