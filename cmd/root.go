@@ -102,6 +102,6 @@ func getDorkFile(cmd *cobra.Command) string {
 
 func init() {
 	rootCmd.Flags().BoolP("urlencode", "e", false, "URL-Encode the output URLs")
-	rootCmd.Flags().StringP("dorkfile", "d", "dorks.txt", "Dorks file to use")
+	rootCmd.Flags().StringP("dorkfile", "d", "", "Dorks file to use (or set env GODORK_DORKFILE)")
 	rootCmd.Flags().StringP("url", "u", "", "a single URL to ceate the dorks for")
 }
