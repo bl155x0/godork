@@ -4,6 +4,7 @@ site:{{URL}} filetype:sql
 site:{{URL}} ext:php intitle:"index of"
 site:{{URL}} ext:log
 site:{{URL}} ext:conf
+site:{{URL}} ext:cnf
 site:{{URL}} ext:ini
 site:{{URL}} ext:asp
 site:{{URL}} ext:aspx
@@ -237,3 +238,9 @@ site:{{URL}} intitle:"WhatsUp Gold" "click here to login"
 site:{{URL}} intitle:"Login - Grafana"
 site:{{URL}} intitle:"Login - Grafana" intext:"Remember me"
 site:{{URL}} intitle:"Login - Grafana" intext:"Forgot your password?"
+
+# Filetypes
+site:{{URL}} filetype:pdf
+site:{{URL}} filetype:xls
+site:{{URL}} filetype:docx
+
