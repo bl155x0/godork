@@ -14,6 +14,9 @@ site:{{URL}} inurl:"/phpMyAdmin/index.php" ext:php
 site:{{URL}} inurl:/phpinfo.php
 site:{{URL}} inurl:/info.php
 
+# email
+site:{{URL}} "email" OR "e-mail" OR "@"
+
 # Sensitive Information Dorks:
 site:{{URL}} intitle:"index of" password
 site:{{URL}} intitle:"index of" private
