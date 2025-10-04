@@ -1,4 +1,4 @@
-module godork
+module github.com/bl155x0/godork
 
 go 1.22.1
 

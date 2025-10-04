@@ -1,6 +1,6 @@
 package main
 
-import "godork/cmd"
+import "github.com/bl155x0/godork/cmd"
 
 func main() {
 	cmd.Execute()

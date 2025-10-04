@@ -2,7 +2,7 @@ package cmd
 
 import (
 	"bufio"
-	"godork/dork"
+	"github.com/bl155x0/godork/dork"
 	"os"
 
 	"github.com/spf13/cobra"
