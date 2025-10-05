@@ -1,9 +1,8 @@
 # godork
-A handy companion for effortlessly generating Google dorking links.
-
+A handy companion for effortlessly generating Google dorking links
 
 ## Prerequisite
-
+https://github.com/bl155x0/godork/blob/main/README.md
 * Go 
 
 ## Installation
@@ -30,8 +29,13 @@ $ export GODORK_DORKFILE="/opt/dorks.txt"
 $ godork -u example.com
 ```
 
-
 Create dorks for various (sub)domains
 ```
-cat subdomains.txt | godork
+$ cat subdomains.txt | godork  > dorks.txt
 ```
+
+Use the Firefox extension `Open-Multiple-URLs` (https://github.com/htrinter/Open-Multiple-URLs/) or a similar tool to open all dorks in a browser
+
+# See Also
+
+* https://www.exploit-db.com/google-hacking-database
